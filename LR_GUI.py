@@ -129,6 +129,17 @@ result_label.grid(row=9, column=0, columnspan=2, pady=10)
 
 def predict_survival():
     try:
+
+        name = name_entry.get().strip()
+        if not all(part.isalpha() for part in name.split(",")):
+            messagebox.showerror("Invalid Name", " Please enter only LETTERS 🙂")
+            return
+
+        fare = float(fare_entry.get())
+        if fare < 200 or fare > 500:
+            messagebox.showerror("Invalid Fare", " Please enter between 200 and 500 🙂")
+            return
+        
         sex = 0 if gender_combo.get() == "male" else 1
 
         pclass = int(pclass_combo.get())
